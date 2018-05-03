@@ -34,7 +34,8 @@ class ArticlesController < ApplicationController
         #render plain: params[:article].inspect
         #@article = Article.new(title: params[:title], description: params[:description])
         @article = Article.new(article_params)
-        @article.user = User.first
+        @article.user = current_user
+        
         
         if @article.save
             flash[:success] = "article is sucessfully created"
